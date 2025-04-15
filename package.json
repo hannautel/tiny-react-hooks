@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "tiny-react-hooks",
   "private": true,
   "scripts": {
     "build": "turbo run build",
