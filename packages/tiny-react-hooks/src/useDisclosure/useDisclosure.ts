@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 type UseDisclosureReturn = {
   isOpen: boolean;
@@ -7,9 +7,11 @@ type UseDisclosureReturn = {
   onToggle: () => void;
 }
 
+type DisclosureDefaultValue = boolean | (() => boolean);
+
 /**
  * Custom hook that handles boolean state with useful utility functions.
- * @param {boolean} [defaultValue] - The initial value for the boolean state (default is `false`).
+ * @param {DisclosureDefaultValue} [defaultValue] - The initial value or produce default value function for the boolean state (default is `false`).
  * @returns {UseDisclosureReturn} An object containing the boolean state value and utility functions to manipulate the state.
  * @throws Will throw an error if `defaultValue` is an invalid boolean value.
  * @public
@@ -18,9 +20,10 @@ type UseDisclosureReturn = {
  * const { isOpen, onOpen, onClose, onToggle } = UseDisclosureReturn(true);
  * ```
  */
-export function useDisclosure(defaultValue = false): UseDisclosureReturn {
-  if (typeof defaultValue !== 'boolean') throw new Error('defaultValue must be a boolean value');
-  const [isOpen, setOpen] = useState<boolean>(defaultValue);
+export function useDisclosure(init: DisclosureDefaultValue = false): UseDisclosureReturn {
+  const initialValue = useRef<boolean>(typeof init === 'function' ? init() : init);
+  if (typeof initialValue.current !== 'boolean') throw new Error('defaultValue must be a boolean value');
+  const [isOpen, setOpen] = useState<boolean>(initialValue.current);
 
   const onOpen = useCallback(() => {
     setOpen(true);
