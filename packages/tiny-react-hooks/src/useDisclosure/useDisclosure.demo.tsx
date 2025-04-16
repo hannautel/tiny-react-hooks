@@ -1,4 +1,4 @@
-import { useDisclosure } from "./useDisclosure";
+import { useDisclosure } from './useDisclosure';
 
 export function Component() {
   const { isOpen, onClose, onOpen, onToggle } = useDisclosure();

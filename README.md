@@ -16,7 +16,7 @@ This is a React hooks library, written in Typescript and easy to use. It provide
 ### Usage example
 
 ```tsx
-import { useDisclosure } from "tiny-react-hooks"; // might be deploy in the future
+import { useDisclosure } from 'tiny-react-hooks'; // might be deploy in the future
 
 function Component() {
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();

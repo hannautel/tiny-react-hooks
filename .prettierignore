@@ -1,0 +1,10 @@
+node_modules
+templates
+dist
+.turbo
+public
+.cache
+pnpm-lock.yaml
+.changeset
+.github
+apps/www/.next
