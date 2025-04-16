@@ -1,11 +1,11 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from "react";
 
 type UseDisclosureReturn = {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
   onToggle: () => void;
-}
+};
 
 type DisclosureDefaultValue = boolean | (() => boolean);
 
@@ -20,9 +20,14 @@ type DisclosureDefaultValue = boolean | (() => boolean);
  * const { isOpen, onOpen, onClose, onToggle } = UseDisclosureReturn(true);
  * ```
  */
-export function useDisclosure(init: DisclosureDefaultValue = false): UseDisclosureReturn {
-  const initialValue = useRef<boolean>(typeof init === 'function' ? init() : init);
-  if (typeof initialValue.current !== 'boolean') throw new Error('defaultValue must be a boolean value');
+export function useDisclosure(
+  init: DisclosureDefaultValue = false,
+): UseDisclosureReturn {
+  const initialValue = useRef<boolean>(
+    typeof init === "function" ? init() : init,
+  );
+  if (typeof initialValue.current !== "boolean")
+    throw new Error("defaultValue must be a boolean value");
   const [isOpen, setOpen] = useState<boolean>(initialValue.current);
 
   const onOpen = useCallback(() => {

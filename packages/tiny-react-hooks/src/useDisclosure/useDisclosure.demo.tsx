@@ -1,12 +1,7 @@
-import { useDisclosure } from './useDisclosure';
+import { useDisclosure } from "./useDisclosure";
 
 export function Component() {
-  const {
-    isOpen,
-    onClose,
-    onOpen,
-    onToggle,
-  } = useDisclosure();
+  const { isOpen, onClose, onOpen, onToggle } = useDisclosure();
   // const {
   //   isOpen,
   //   onClose,
@@ -29,5 +24,5 @@ export function Component() {
       <button onClick={onOpen}>Close</button>
       <button onClick={onToggle}>Toggle</button>
     </>
-  )
+  );
 }
