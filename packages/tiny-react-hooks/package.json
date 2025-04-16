@@ -1,0 +1,42 @@
+{
+  "name": "tiny-react-hooks",
+  "type": "module",
+  "version": "1.0.0",
+  "private": false,
+  "author": "Tuan Anh <tuananhit.oct@gmail.com",
+  "homepage": "https://tiny-react-hooks.com",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "19.1.0",
+    "@vitest/coverage-v8": "^3.1.1",
+    "jsdom": "^26.1.0",
+    "react": "^19.1.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0  || ^17 || ^18 || ^19.1.0"
+  }
+}
