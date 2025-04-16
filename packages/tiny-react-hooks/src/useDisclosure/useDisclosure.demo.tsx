@@ -1,12 +1,24 @@
 import { useDisclosure } from './useDisclosure';
 
-export default function Component() {
+export function Component() {
   const {
     isOpen,
     onClose,
     onOpen,
     onToggle,
   } = useDisclosure();
+  // const {
+  //   isOpen,
+  //   onClose,
+  //   onOpen,
+  //   onToggle,
+  // } = useDisclosure(false);
+  // const {
+  //   isOpen,
+  //   onClose,
+  //   onOpen,
+  //   onToggle,
+  // } = useDisclosure(() => false);
 
   return (
     <>

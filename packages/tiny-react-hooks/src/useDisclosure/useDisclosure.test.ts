@@ -12,10 +12,16 @@ describe('useDisclosure()', () => {
     expect(typeof result.current.onToggle).toBe('function');
   });
 
+  describe('with no default value', () => {
+    it('should return isOpen with false when nothing is passed as argument', () => {
+      const { result } = renderHook(() => useDisclosure());
+      expect(result.current.isOpen).toBe(false);
+    });
+  });
 
   describe('with default value',  () => {
-    describe('with correct default value as boolean', () => {
-      describe('should work with default value', () => {
+    describe('with correct default value', () => {
+      describe('with default value is a boolean', () => {
         it('should return isOpen with true', () => {
           const { result } = renderHook(() => useDisclosure(true));
           expect(result.current.isOpen).toBe(true);
@@ -24,20 +30,39 @@ describe('useDisclosure()', () => {
           const { result } = renderHook(() => useDisclosure(false));
           expect(result.current.isOpen).toBe(false);
         });
-        it('should return isOpen with false when nothing is passed as argument', () => {
-          const { result } = renderHook(() => useDisclosure());
+      });
+
+      describe('with default value is function', () => {
+        it('should return isOpen with true', () => {
+          const { result } = renderHook(() => useDisclosure(() => true));
+          expect(result.current.isOpen).toBe(true);
+        });
+        it('should return isOpen with false', () => {
+          const { result } = renderHook(() => useDisclosure(() => false));
           expect(result.current.isOpen).toBe(false);
         });
       });
     });
     describe('with incorrect default value type', () => {
-      it('should throw an error', () => {
-        const nonBoolean = '' as never;
-        vi.spyOn(console, 'error').mockImplementation(() => vi.fn());
-        expect(() => {
-          renderHook(() => useDisclosure(nonBoolean));
-        }).toThrowError('defaultValue must be a boolean value');
-        vi.resetAllMocks();
+      describe('with default value is a boolean', () => {
+        it('should throw an error', () => {
+          const nonBoolean = '' as never;
+          vi.spyOn(console, 'error').mockImplementation(() => vi.fn());
+          expect(() => {
+            renderHook(() => useDisclosure(nonBoolean));
+          }).toThrowError('defaultValue must be a boolean value');
+          vi.resetAllMocks();
+        });
+      });
+      describe('with default value is a function', () => {
+        it('should throw an error', () => {
+          const nonBoolean = () => '' as never;
+          vi.spyOn(console, 'error').mockImplementation(() => vi.fn());
+          expect(() => {
+            renderHook(() => useDisclosure(nonBoolean));
+          }).toThrowError('defaultValue must be a boolean value');
+          vi.resetAllMocks();
+        });
       });
     });
   });
