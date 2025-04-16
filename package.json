@@ -1,21 +1,26 @@
 {
   "name": "workspace",
   "private": true,
+  "module": "true",
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "gen-hook": "turbo gen hook --config \"turbo/generators/config.cts\" && pnpm format"
   },
   "devDependencies": {
+    "@turbo/gen": "^2.5.0",
+    "date-fns": "^4.1.0",
     "prettier": "^3.5.3",
     "turbo": "^2.5.0",
     "typescript": "5.8.2"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
-    "node": ">=18"
-  }
+    "node": ">=18.17"
+  },
+  "license": "MIT"
 }
