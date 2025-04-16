@@ -9,9 +9,11 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "gen-hook": "turbo gen hook --config \"turbo/generators/config.cts\" && pnpm format"
+    "gen-hook": "turbo gen hook --config \"turbo/generators/config.cts\" && pnpm format",
+    "publish-packages": "turbo run build lint test && changeset version && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.1",
     "@turbo/gen": "^2.5.0",
     "date-fns": "^4.1.0",
     "prettier": "^3.5.3",

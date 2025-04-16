@@ -5,6 +5,11 @@
   "private": false,
   "author": "Tuan Anh <tuananhit.oct@gmail.com",
   "homepage": "https://tiny-react-hooks.com",
+  "keywords": [
+    "typescript",
+    "react",
+    "hooks"
+  ],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
