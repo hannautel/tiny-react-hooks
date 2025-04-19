@@ -1,0 +1,1 @@
+A hook that keep the callback always stable and do not need to add to dependencies of other hooks
