@@ -3,14 +3,14 @@ import { format } from 'date-fns'
 import path from 'path'
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
-  const usehooksSrcPath = path.resolve('packages/usehooks-ts/src')
+  const usehooksSrcPath = path.resolve('packages/tiny-react-hooks/src')
   plop.setGenerator('hook', {
-    description: 'Create a post',
+    description: 'Create a new hook',
     prompts: [
       {
         type: 'input',
         name: 'name',
-        message: 'post name please (eg: "use test")',
+        message: 'give me the name of your hook (eg. useCallback)',
       },
     ],
     actions: [
